@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Report - Face Recognition Attendance System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --bg-page: #ffffff;
+            --text-main: #334155;
+            --text-head: #0f172a;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f1f5f9;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 50px 0;
+        }
+
+        .report-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-page);
+            padding: 80px 100px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+
+        /* Front Page Styling */
+        .front-page {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+        }
+
+        .logo-placeholder {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border-radius: 20%;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: 'Outfit';
+            font-weight: 700;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 15px rgba(37, 99, 235, 0.2);
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            color: var(--text-head);
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h2.subtitle {
+            font-size: 1.5rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .meta-info {
+            margin-top: 100px;
+            border-top: 1px solid var(--border);
+            padding-top: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info-block span {
+            display: block;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: #94a3b8;
+            margin-bottom: 5px;
+        }
+
+        .info-block p {
+            font-weight: 600;
+            color: var(--text-head);
+        }
+
+        /* General Chapters */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.25rem;
+            color: var(--text-head);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: '';
+            width: 8px;
+            height: 35px;
+            background: var(--primary);
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-head);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 1.1rem;
+            color: #475569;
+        }
+
+        /* Abstract Box */
+        .abstract-box {
+            background: #f8fafc;
+            padding: 30px;
+            border-left: 5px solid var(--primary);
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: #f8fafc;
+            text-align: left;
+            padding: 15px;
+            color: var(--text-head);
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Mermaid placeholder */
+        .diagram {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 30px;
+            border-radius: 12px;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Code snippets */
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--primary);
+            font-family: 'Consolas', monospace;
+        }
+
+        pre {
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 25px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 25px 0;
+            font-family: 'Consolas', monospace;
+            line-height: 1.4;
+        }
+
+        .keyword { color: #f472b6; }
+        .func { color: #38bdf8; }
+        .string { color: #4ade80; }
+        .comment { color: #64748b; }
+
+        /* Print optimization */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .report-container {
+                box-shadow: none;
+                max-width: 100%;
+                margin: 0;
+                padding: 40px;
+            }
+            .no-print {
+                display: none;
+            }
+            section {
+                page-break-inside: avoid;
+            }
+            h1, h2 {
+                page-break-after: avoid;
+            }
+        }
+
+        .no-print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+            transition: all 0.2s transform;
+            cursor: pointer;
+            border: none;
+            z-index: 100;
+        }
+
+        .no-print-btn:hover {
+            transform: scale(1.05);
+            background: #1d4ed8;
+        }
+
+    </style>
+</head>
+<body>
+
+    <button onclick="window.print()" class="no-print-btn no-print">Export to PDF</button>
+
+    <div class="report-container">
+        
+        <!-- FRONT PAGE -->
+        <div class="front-page">
+            <div class="logo-placeholder">AI</div>
+            <h1>Project Report</h1>
+            <h2 class="subtitle">Face Recognition Attendance System</h2>
+            
+            <div class="meta-info">
+                <div class="info-block">
+                    <span>Date Generated</span>
+                    <p>April 01, 2026</p>
+                </div>
+                <div class="info-block">
+                    <span>Department</span>
+                    <p>Computer Science & Engineering</p>
+                </div>
+                <div class="info-block">
+                    <span>Subject</span>
+                    <p>Final Year Project</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1. ABSTRACT -->
+        <section id="abstract">
+            <h2>1. Abstract</h2>
+            <div class="abstract-box">
+                The Face Recognition Attendance System is a modern, automated solution designed to streamline the attendance-taking process in educational or corporate environments. By leveraging state-of-the-art computer vision and deep learning techniques, the system eliminates the inefficiencies of traditional manual attendance methods. Built with a robust FastAPI backend and a responsive Next.js frontend, the application provides real-time face detection, group recognition, and automated reporting.
+            </div>
+        </section>
+
+        <!-- 2. INTRODUCTION -->
+        <section id="introduction">
+            <h2>2. Introduction</h2>
+            
+            <h3>2.1 Problem Statement</h3>
+            <p>Traditional methods of marking attendance, such as manual registers or card-based systems, are prone to human error, time-consuming, and susceptible to "buddy punching" or proxy attendance. In a classroom environment, significant productive time is wasted in calling out names, and physical sheets are hard to maintain over long periods.</p>
+
+            <h3>2.2 Project Objective</h3>
+            <p>Our primary goal was to develop a contactless, reliable, and efficient system that solves these issues. The core objectives included:</p>
+            <ul>
+                <li><strong>Biometric Accuracy:</strong> Automatically identify students using localized facial features.</li>
+                <li><strong>Automation:</strong> Support bulk processing of student records with automated photo encoding via external URLs.</li>
+                <li><strong>User Experience:</strong> Provide specialized dashboards for both Teachers (Administrators) and Students.</li>
+                <li><strong>Privacy:</strong> Ensure security through role-based access control and branch-level isolation.</li>
+            </ul>
+
+            <h3>2.3 Scope</h3>
+            <p>The scope of this project encompasses student registration, face encoding generation, live camera stream processing, automated attendance logging, and comprehensive analytics generation through specialized reporting modules.</p>
+        </section>
+
+        <!-- 3. TECHNOLOGY STACK -->
+        <section id="tech-stack">
+            <h2>3. Technology Stack</h2>
+            
+            <h3>3.1 Backend (FastAPI)</h3>
+            <p>The backend is built using <strong>FastAPI</strong>, a high-performance framework chosen for its asynchronous support and automatic JSON validation. <strong>SQLAlchemy</strong> handles ORM operations, allowing for robust interaction with the <strong>SQLite</strong> database.</p>
+
+            <h3>3.2 Frontend (Next.js)</h3>
+            <p>We used <strong>Next.js 14</strong> for the frontend to ensure fast page loads and SEO optimization. <strong>Tailwind CSS</strong> was implemented for a modern, fluid user interface, while <strong>Lucide React</strong> provides the visual iconography.</p>
+
+            <h3>3.3 Core AI/ML Libraries</h3>
+            <p>The system's "brain" relies on <strong>face_recognition</strong> (built on dlib) which achieves near-human accuracy. <strong>OpenCV</strong> manages the webcam stream processing, and <strong>NumPy</strong> handles the multi-dimensional vector calculations.</p>
+        </section>
+
+        <!-- 4. SYSTEM ARCHITECTURE -->
+        <section id="architecture">
+            <h2>4. System Architecture</h2>
+            <p>The project follows a decoupled client-server architecture, ensuring that the heavy biometric calculations do not block the user interface.</p>
+            
+            <div class="diagram" style="text-align: left; font-family: monospace;">
+                graph TD<br>
+                &nbsp;&nbsp;subgraph Frontend<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;WebCam[Webcam API] --> React[Next.js Components]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;React --> API_Client[API Client / Axios]<br>
+                &nbsp;&nbsp;end<br><br>
+                &nbsp;&nbsp;subgraph Backend<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;API_Client --> FastAPI[FastAPI Routers]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;FastAPI --> Auth[JWT Auth Middleware]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Auth --> logic[Business Logic]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;logic --> DB[(SQLite Database)]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;logic --> FaceService[Face Recognition Service]<br>
+                &nbsp;&nbsp;end
+            </div>
+        </section>
+
+        <!-- 5. DATABASE SCHEMA -->
+        <section id="database">
+            <h2>5. Database Schema</h2>
+            
+            <h3>5.1 Students Table</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>Integer</td>
+                        <td>Primary Key (Internal Increment)</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>String</td>
+                        <td>Full name of the student record</td>
+                    </tr>
+                    <tr>
+                        <td>roll_no</td>
+                        <td>String</td>
+                        <td>Unique Student Registration Number</td>
+                    </tr>
+                    <tr>
+                        <td>department</td>
+                        <td>String</td>
+                        <td>Academic Branch (CSE, EE, CIVIL, MECH)</td>
+                    </tr>
+                    <tr>
+                        <td>face_encoding</td>
+                        <td>Binary</td>
+                        <td>Serialized 128-float face signature</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>5.2 Attendance Table</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>Integer</td>
+                        <td>Unique Record Identifier</td>
+                    </tr>
+                    <tr>
+                        <td>student_id</td>
+                        <td>Integer</td>
+                        <td>Foreign Key linking to Student</td>
+                    </tr>
+                    <tr>
+                        <td>date</td>
+                        <td>Date</td>
+                        <td>ISO format date of recognition</td>
+                    </tr>
+                    <tr>
+                        <td>confidence</td>
+                        <td>Float</td>
+                        <td>Matching distance score (0.0 - 1.0)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 6. IMPLEMENTATION -->
+        <section id="implementation">
+            <h2>6. Detailed Implementation</h2>
+
+            <h3>6.1 Face Encoding Process</h3>
+            <p>During student registration or bulk import, the system executes a multi-step pipeline:</p>
+            <ul>
+                <li>Downloads the source image from the provided link or upload.</li>
+                <li>Locates the primary face using <strong>HOG (Histogram of Oriented Gradients)</strong>.</li>
+                <li>Extracts 68 facial landmarks to align the face.</li>
+                <li>Generates a unique 128-dimension vector (Biometric Signature).</li>
+                <li>Stores this vector in the database for future comparison.</li>
+            </ul>
+
+            <h3>6.2 Comparison Logic</h3>
+            <pre>
+<span class="keyword">def</span> <span class="func">compare_faces</span>(known_encodings, unknown_image, sensitivity=75):
+    <span class="comment"># Adjust tolerance based on sensitivity settings</span>
+    tolerance = 0.8 - (sensitivity - 50) * 0.008
+    unknown_enc = face_recognition.face_encodings(unknown_image)
+    
+    matches = []
+    <span class="keyword">for</span> u_enc <span class="keyword">in</span> unknown_enc:
+        distances = face_recognition.face_distance(known_faces, u_enc)
+        best_match = np.argmin(distances)
+        <span class="keyword">if</span> distances[best_match] <= tolerance:
+            <span class="comment"># Mark as present if below distance threshold</span>
+            matches.append((student_ids[best_match], (1-distances[best_match])*100))
+    <span class="keyword">return</span> matches</pre>
+        </section>
+
+        <!-- 7. SECURITY -->
+        <section id="security">
+            <h2>7. Security and Privacy</h2>
+            <p>We implemented a robust security model to protect student biometrics and attendance data:</p>
+            <ul>
+                <li><strong>JWT Protection:</strong> All system interactions require a valid JSON Web Token.</li>
+                <li><strong>Branch Isolation:</strong> A CSE Teacher is mathematically restricted from viewing EE or CIVIL logs.</li>
+                <li><strong>Signature Hash:</strong> We store the 128-dimensional vector, which is a mathematical representation. It is impossible to reconstruct the original image from this vector alone.</li>
+            </ul>
+        </section>
+
+        <!-- 9. CONCLUSION -->
+        <section id="conclusion">
+            <h2>8. Conclusion</h2>
+            <p>The Face Recognition Attendance System provides a scalable and robust alternative to manual tracking. It successfully integrates modern AI with web technologies to deliver a premium user experience that is both efficient and secure.</p>
+        </section>
+
+    </div>
+
+    <p style="text-align: center; color: #94a3b8; font-size: 0.8rem; margin-top: 40px;" class="no-print">
+        &copy; 2026 Face Recognition Attendance Project. Generated by Antigravity.
+    </p>
+
+</body>
+</html>
