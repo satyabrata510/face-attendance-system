@@ -1,4 +1,4 @@
-# 📸 AI-Driven Face Recognition Attendance System
+# 📸 Face Recognition Attendance System
 
 ![System Status](https://img.shields.io/badge/Status-Active-brightgreen)
 ![Next.js](https://img.shields.io/badge/Frontend-Next.js-black?logo=next.js)
